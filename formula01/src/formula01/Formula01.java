@@ -17,7 +17,7 @@ public class Formula01 {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("vai tomar banho loko kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-        System.out.println("tomar banho esse git kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+        System.out.println("tomar banho esse git kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk😂😂😂😂😂😂😂😂");
     }
     
 }
