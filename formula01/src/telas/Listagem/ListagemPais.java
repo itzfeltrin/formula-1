@@ -8,7 +8,7 @@ package telas.Listagem;
 import dao.PaisDao;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
+import telas.manutencao.ManutencaoPais;
 
 /**
  *
@@ -22,7 +22,7 @@ public class ListagemPais extends javax.swing.JDialog {
     public ListagemPais(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         atualizarTabela();
     }
 
@@ -98,20 +98,21 @@ public class ListagemPais extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        ManutencaoPais mp = new ManutencaoPais(null, true);
+        mp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-        
-    public void atualizarTabela(){
-        DefaultTableModel modelo = new DefaultTableModel(); 
+    public void atualizarTabela() {
+        DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Sigla");
         modelo.addColumn("Nome");
         List<String[]> resultados = PaisDao.consultar();
-        for(String[] linha: resultados){
+        for (String[] linha : resultados) {
             modelo.addRow(linha);
         }
         tabela.setModel(modelo);
     }
+
     /**
      * @param args the command line arguments
      */
