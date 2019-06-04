@@ -53,6 +53,11 @@ public class ListagemPais extends javax.swing.JDialog {
                 "Sigla", "Nome"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabelaMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         jButton1.setText("Novo");
@@ -101,6 +106,16 @@ public class ListagemPais extends javax.swing.JDialog {
         ManutencaoPais mp = new ManutencaoPais(null, true, this);
         mp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
+        if(evt.getClickCount() == 2){
+            int linhaSelecionada = tabela.getSelectedRow();
+            
+            String pk = tabela.getValueAt(linhaSelecionada, 0).toString();
+            ManutencaoPais manutencao = new ManutencaoPais(null, true, this, pk);
+            manutencao.setVisible(true);
+        }
+    }//GEN-LAST:event_tabelaMousePressed
 
     public void atualizarTabela() {
         DefaultTableModel modelo = new DefaultTableModel();

@@ -5,6 +5,7 @@
  */
 package telas.manutencao;
 
+import dao.PaisDao;
 import static dao.PaisDao.inserir;
 import javax.swing.JOptionPane;
 import telas.Listagem.ListagemPais;
@@ -86,6 +87,11 @@ public class ManutencaoPais extends javax.swing.JDialog {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setPreferredSize(new java.awt.Dimension(78, 23));
@@ -154,7 +160,12 @@ public class ManutencaoPais extends javax.swing.JDialog {
         boolean resultado = inserir(jtfSigla.getText(), jtfNome.getText());
         if (resultado){
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
-        }else{
+            
+            if(listagem != null){
+                listagem.atualizarTabela();
+            }            
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Erro!");
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -164,8 +175,24 @@ public class ManutencaoPais extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        boolean resultado = PaisDao.alterar(jtfSigla.getText(), jtfNome.getText());
+        
+        if(resultado){
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            
+            if(listagem != null){
+                listagem.atualizarTabela();
+            }
+            dispose();
+        } 
+        else {
+            JOptionPane.showMessageDialog(null, "Erro");
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //boolean resultado = PaisDao.excluir(sigla)
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -48,6 +48,19 @@ public class PaisDao {
         }
     }
 
+    public static boolean excluir(String sigla) {
+        String sql = "DELETE FROM pais WHERE sigla = ?";
+        try {
+            PreparedStatement ps = coneksao.Conexao.getConexao().prepareStatement(sql);            
+            ps.setString(1, sigla);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
     public static List<String[]> consultar() {
         List<String[]> resultados = new ArrayList<>();
         String sql = "SELECT sigla, nome FROM pais";
